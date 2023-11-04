@@ -8,6 +8,22 @@ fn farenheit_to_celcius(value: f64) -> f64 {
     return (value - 32.00) * (5.00/9.00);
 }
 
+fn celcius_to_kelvin(value: f64) -> f64 {
+    return value + 273.15;
+}
+
+fn kelvin_to_celcius(value: f64) -> f64 {
+    return value - 273.15;
+}
+
+fn kelvin_to_farenheit(value: f64) -> f64 {
+    return kelvin_to_celcius(value) * (9.00/5.00) + 32.00;
+}
+
+fn farenheit_to_kelvin(value: f64) -> f64 {
+    return farenheit_to_celcius(value) + 273.15;
+}
+
 pub fn convert_temp() -> f64 {
     println!("What do you wanna convert? Farenheit or Celcius? ");
 
@@ -30,16 +46,16 @@ pub fn convert_temp() -> f64 {
         "farenheit\n" => {
             let result = farenheit_to_celcius(value);
             println!("{}° Farenheit is {}° Celcius", value, result);
-            return result;
+            result
         },
         "celcius\n" => {
             let result = celcius_to_farnheit(value);
             println!("{}° Celcius is {}° Farenheit", value, result);
-            return result;
+            result
         },
         _ => {
             println!("Invalid input");
-            return 0.0;
+            0.0
         }
     }
 }
